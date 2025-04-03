@@ -1,5 +1,4 @@
-
-![ubuntu login message](hero-cheat-sheets.jpg)
+![ubuntu login message](assets/hero-login-message.jpg)
 
 # Custom Login Message (MOTD) Setup
 
