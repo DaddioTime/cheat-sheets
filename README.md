@@ -1,6 +1,6 @@
 # 🧩 Puzzle-Pieces
 
-![puzzle-pieces](assets/hero-puzzle-pieces)
+![puzzle-pieces](assets/hero-puzzle-pieces.jpg)
 
 A modular collection of setup and configuration guides for Docker, Portainer, Ubuntu, and macOS – each file is an independent piece in your infrastructure puzzle.
 
