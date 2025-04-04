@@ -8,17 +8,17 @@ A modular collection of setup and configuration guides for Docker, Portainer, Ub
 
 ## 📦 Contents
 
-- **[Docker Basics 🐳](#docker-basics)**  
-  A compact guide to installing and managing Docker containers and images.
+- **[Docker Basics 🐳](#docker-basics)**
+A compact guide to installing and managing Docker containers and images.
 
-- **[Portainer](#portainer)**  
+- **[Portainer](#portainer)**
   Lightweight UI for managing Docker environments in the browser.
 
-- **[Extended Docker & Ubuntu Guides 🛠️](#extended-docker--ubuntu-guides)**  
+- **[Extended Docker & Ubuntu Guides 🛠️](#extended-docker--ubuntu-guides)**
   Practical how-tos for SSH keys, unattended upgrades, and login message customization.
 
-- **[macOS Developer Shortcuts ⌨️](#macos-developer-shortcuts)**  
-  Personal hotkey collection for productivity on macOS.
+- **[Misc ⌨️](#macos-developer-shortcuts)**
+  Everything else
 
 ---
 
@@ -40,19 +40,19 @@ Quick-start guide for setting up Portainer CE using Docker – a simple and effe
 
 ## Ubuntu Guides
 
-> - [ubuntu-install-public-keys.md](./ubuntu-install-public-keys.md) – SSH public key setup  
-> - [ubuntu-auto-updated.md](./ubuntu-auto-updated.md) – Enable unattended upgrades  
-> - [ubuntu-login-message.md](./ubuntu-login-message.md) – Custom MOTD with system stats  
+> 👉 [ubuntu-install-public-keys.md](./ubuntu-install-public-keys.md) – SSH public key setup
+> 👉 [ubuntu-auto-updated.md](./ubuntu-auto-updated.md) – Enable unattended upgrades
+> 👉 [ubuntu-login-message.md](./ubuntu-login-message.md) – Custom MOTD with system stats
+> 👉 [ubuntu-ufw.md](./ubuntu-ufw.md) – UFW "Firewall" Documentation and Script Automation
 
 Each file provides a focused, step-by-step walkthrough for hardening or automating your Ubuntu environment.
 
 ---
 
-## macOS Developer Shortcuts
+## Misc
 
-> 👉 [macos.md](./macos.md)
-
-A list of personalized macOS keyboard shortcuts to streamline daily dev workflows using tools like Raycast, Arc, VSCode, and more.
+> 👉 [macos.md](./macos.md) - A list of personalized macOS keyboard shortcuts to streamline daily dev workflows using tools like Raycast, Arc, VSCode, and more.
+> 👉 [cloudns-api-update.md](./cloudns-api-update.md) - Automate update WAN on ClouDNS Service
 
 ⸻
 

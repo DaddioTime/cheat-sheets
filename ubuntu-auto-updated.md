@@ -32,7 +32,7 @@ sudo dpkg-reconfigure --priority=low unattended-upgrades
 Edit the configuration file to set the update schedule:
 
 ```bash
-nano /etc/apt/apt.conf.d/20auto-upgrades
+sudo nano /etc/apt/apt.conf.d/20auto-upgrades
 ```
 
 Ensure the file contains the following settings:

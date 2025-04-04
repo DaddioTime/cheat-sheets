@@ -110,30 +110,30 @@ Ensure Docker is running properly by checking its status and running a test cont
 ### Pulling and Running Images
 
 - **Pull an image from Docker Hub:**
-  ```bash
-  docker pull alpine
-  ```
+```bash
+docker pull alpine
+```
 
 - **Run a container (detached mode):**
-  ```bash
-  docker run -d -t --name palermo alpine
-  ```
+```bash
+docker run -d -t --name palermo alpine
+```
 
 - **Run a container with port mapping:**
-  ```bash
-  docker run -d -t -p 80:80 --name palermo alpine
-  ```
+```bash
+docker run -d -t -p 80:80 --name palermo alpine
+```
 
 - **List running containers:**
-  ```bash
-  docker ps
-  ```
+```bash
+docker ps
+```
 
 - **Execute a command in a running container:**
-  ```bash
-  docker exec -it one sh
-  ```
-  *Note: Use `bash` instead of `sh` if supported by the container.*
+```bash
+docker exec -it one sh
+```
+*Note: Use `bash` instead of `sh` if supported by the container.*
 
 ---
 
@@ -142,38 +142,38 @@ Ensure Docker is running properly by checking its status and running a test cont
 ### Creating and Managing Networks
 
 - **Create a new network:**
-  ```bash
-  sudo docker network create net1
-  ```
+```bash
+sudo docker network create net1
+```
 
 - **Run a container on the new network:**
-  ```bash
-  sudo docker run --rm --network net1 --name tokio busybox
-  sudo docker run itd --rm --network net1 --name tokio busybox 🔴
-  ```
+```bash
+sudo docker run --rm --network net1 --name tokio busybox
+sudo docker run itd --rm --network net1 --name tokio busybox 🔴
+```
 
 - **Run a container with host networking:**
-  ```bash
-  sudo docker run -itd --rm --network host --name helsinki alpine
-  sudo docker run -itd --rm -- network host --name helsinki 🔴
+```bash
+sudo docker run -itd --rm --network host --name helsinki alpine
+sudo docker run -itd --rm -- network host --name helsinki 🔴
 
-  ```
+```
 
 - **Create a macvlan network (for direct access via router):**
-  ```bash
-  sudo docker network create -d macvlan \
-    --subnet 192.168.24.0/24 \
-    --gateway 192.168.24.1 \
-    -o parent=enp0s3 homenetwork
+```bash
+sudo docker network create -d macvlan \
+--subnet 192.168.24.0/24 \
+--gateway 192.168.24.1 \
+-o parent=enp0s3 homenetwork
 
-    🔴 sudo docker network creat -d macvlan --subnetz 192.168.24.0/24 --gateway 192.168.24.1 -o partner=enp0s3 homenetwork 🔴
-  ```
-  > *Note: Replace `enp0s3` with your actual network interface. You may need to manually assign the host IP for this setup.*
+🔴 sudo docker network creat -d macvlan --subnetz 192.168.24.0/24 --gateway 192.168.24.1 -o partner=enp0s3 homenetwork 🔴
+```
+> *Note: Replace `enp0s3` with your actual network interface. You may need to manually assign the host IP for this setup.*
 
 - **List all networks:**
-  ```bash
-  docker network ls
-  ```
+```bash
+docker network ls
+```
 
 ---
 
@@ -190,10 +190,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Update system and install curl
 RUN apt-get update && \
-    apt-get install -y curl && \
-    apt-get clean && \
-    ENV Port=8080 \
-    rm -rf /var/lib/apt/lists/*
+apt-get install -y curl && \
+apt-get clean && \
+ENV Port=8080 \
+rm -rf /var/lib/apt/lists/*
 
 # Copy scripts or files into the image
 COPY ./start.sh /start.sh
@@ -215,19 +215,19 @@ curl https://example.org
 ### Building and Running the Image
 
 - **Build the image:**
-  ```bash
-  docker build -t one .
-  ```
+```bash
+docker build -t one .
+```
 
 - **List local images:**
-  ```bash
-  docker images
-  ```
+```bash
+docker images
+```
 
 - **Run the created image:**
-  ```bash
-  docker run one
-  ```
+```bash
+docker run one
+```
 
 ---
 
