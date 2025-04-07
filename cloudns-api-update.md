@@ -15,7 +15,7 @@ Expected Output
 
 The API will return a JSON object containing the details of the DNS records for the specified domain and host. For example:
 
-{"592120637":{"id":"592120637","type":"A","host":"support","record":"4.3.2.4","dynamicurl_status":0,"failover":"0","ttl":"3600","status":1}}
+> {"592120637":{"id":"592120637","type":"A","host":"support","record":"4.3.2.4","dynamicurl_status":0,"failover":"0","ttl":"3600","status":1}}
 
 In this example, the Record ID is 592120637. This is the unique identifier for the A-record corresponding to support.domain.com.
 
@@ -55,29 +55,30 @@ How It Works
 The script uses curl to request your public IP from ipify.
 	2.	Update the DNS Record:
 It then calls the ClouDNS API endpoint mod-record.json with all the necessary parameters:
-	•	auth-id and auth-password: Your ClouDNS API credentials.
-	•	domain-name: The domain of the record (domain.com).
-	•	record-id: The unique identifier of the record to update (592098172).
-	•	host: The subdomain part of the record (support).
-	•	record: The new IP address retrieved from ipify.
-	•	ttl: Time to Live for the DNS record (set to 3600 seconds).
+- auth-id and auth-password: Your ClouDNS API credentials.
+- domain-name: The domain of the record (domain.com).
+- record-id: The unique identifier of the record to update (592098172).
+- host: The subdomain part of the record (support).
+- record: The new IP address retrieved from ipify.
+- ttl: Time to Live for the DNS record (set to 3600 seconds).
 
 ⸻
 
 Usage
-	1.	Save the Script:
-Save the complete update script as update_dns.sh.
-	2.	Make It Executable:
-Run the command:
+1.	Save the Script:
+	Save the complete update script as update_dns.sh.
+2.	Make It Executable:
+	Run the command:
 
+```bash
 chmod +x update_dns.sh
+```
 
+3.	Run the Script:
+	Execute the script by running:
 
-	3.	Run the Script:
-Execute the script by running:
-
+```bash
 ./update_dns.sh
-
-
+```
 
 This script will update your A-record with the current public IP automatically. You can schedule it with cron for regular updates if needed.
