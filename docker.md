@@ -161,26 +161,26 @@ Ensure Docker is running properly by checking its status and running a test cont
 To run Docker as a non-root user (e.g., John), you need to:
 
 **Step-by-step:**
-	1.	Ensure the Docker group exists (should be created automatically with the installation):
+1.	Ensure the Docker group exists (should be created automatically with the installation):
 
 ```bash
 getent group docker
 ```
 
-	2.	Add user John to the docker group:
+2.	Add user John to the docker group:
 
 ```bash
 sudo usermod -aG docker john
 ```
 
-	3.	Apply group changes:
-	•	Log out and log back in as user John, or:
+3.	Apply group changes:
+- Log out and log back in as user John, or:
 
 ```bash
 newgrp docker
 ```
 
-	4.	Test Docker without sudo (as user John):
+4.	Test Docker without sudo (as user John):
 
   ```bash
 docker run hello-world
