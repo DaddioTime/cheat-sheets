@@ -7,28 +7,29 @@
     - [Option 2: Install Using the Convenience Script](#option-2-install-using-the-convenience-script)
     - [Option 3: Install from Docker’s Official Repository (Manual Method)](#option-3-install-from-dockers-official-repository-manual-method)
   - [2. Verify Docker Installation](#2-verify-docker-installation)
-  - [3. Basic Docker Commands](#3-basic-docker-commands)
+  - [3. Secure Group and Permissions Setup (docker group)](#3-secure-group-and-permissions-setup-docker-group)
+  - [4. Basic Docker Commands](#4-basic-docker-commands)
     - [Pulling and Running Images](#pulling-and-running-images)
-  - [4. Docker Networking](#4-docker-networking)
+  - [5. Docker Networking](#5-docker-networking)
     - [Creating and Managing Networks](#creating-and-managing-networks)
-  - [5. Creating a Custom Docker Image](#5-creating-a-custom-docker-image)
+  - [6. Creating a Custom Docker Image](#6-creating-a-custom-docker-image)
     - [Example Dockerfile](#example-dockerfile)
     - [start.sh Script](#startsh-script)
     - [Building and Running the Image](#building-and-running-the-image)
-  - [6. Container Management Commands](#6-container-management-commands)
+  - [7. Container Management Commands](#7-container-management-commands)
     - [Common Container Operations](#common-container-operations)
-  - [7. Image Management Commands](#7-image-management-commands)
+  - [8. Image Management Commands](#8-image-management-commands)
     - [Managing Docker Images](#managing-docker-images)
-  - [8. Volumes \& Networks Management](#8-volumes--networks-management)
+  - [9. Volumes \& Networks Management](#9-volumes--networks-management)
     - [Working with Volumes](#working-with-volumes)
     - [Working with Networks](#working-with-networks)
-  - [9. Debugging \& Inspection](#9-debugging--inspection)
+  - [10. Debugging \& Inspection](#10-debugging--inspection)
     - [Useful Commands for Troubleshooting](#useful-commands-for-troubleshooting)
-  - [10. Bulk Container Management](#10-bulk-container-management)
+  - [11. Bulk Container Management](#11-bulk-container-management)
     - [Managing Multiple Containers](#managing-multiple-containers)
-  - [11. Executing Commands Within Containers](#11-executing-commands-within-containers)
+  - [12. Executing Commands Within Containers](#12-executing-commands-within-containers)
     - [Managing Container Processes and Files](#managing-container-processes-and-files)
-  - [12. Docker Image Operations](#12-docker-image-operations)
+  - [13. Docker Image Operations](#13-docker-image-operations)
     - [Additional Commands for Images](#additional-commands-for-images)
 
 
@@ -154,7 +155,45 @@ Ensure Docker is running properly by checking its status and running a test cont
 
 ---
 
-## 3. Basic Docker Commands
+
+## 3. Secure Group and Permissions Setup (docker group)
+
+To run Docker as a non-root user (e.g., John), you need to:
+
+**Step-by-step:**
+	1.	Ensure the Docker group exists (should be created automatically with the installation):
+
+```bash
+getent group docker
+```
+
+	2.	Add user John to the docker group:
+
+```bash
+sudo usermod -aG docker john
+```
+
+	3.	Apply group changes:
+	•	Log out and log back in as user John, or:
+
+```bash
+newgrp docker
+```
+
+	4.	Test Docker without sudo (as user John):
+
+  ```bash
+docker run hello-world
+```
+
+
+**Security Note:
+**
+Adding a user to the docker group gives root-equivalent permissions, because the Docker daemon has full access to the host. This is acceptable for trusted users, but not recommended in shared environments.
+
+---
+
+## 4. Basic Docker Commands
 
 ### Pulling and Running Images
 
@@ -186,7 +225,7 @@ docker exec -it one sh
 
 ---
 
-## 4. Docker Networking
+## 5. Docker Networking
 
 ### Creating and Managing Networks
 
@@ -226,7 +265,7 @@ docker network ls
 
 ---
 
-## 5. Creating a Custom Docker Image
+## 6. Creating a Custom Docker Image
 
 ### Example Dockerfile
 
@@ -280,7 +319,7 @@ docker run one
 
 ---
 
-## 6. Container Management Commands
+## 7. Container Management Commands
 
 ### Common Container Operations
 
@@ -300,7 +339,7 @@ docker run one
 
 ---
 
-## 7. Image Management Commands
+## 8. Image Management Commands
 
 ### Managing Docker Images
 
@@ -313,7 +352,7 @@ docker run one
 
 ---
 
-## 8. Volumes & Networks Management
+## 9. Volumes & Networks Management
 
 ### Working with Volumes
 
@@ -334,7 +373,7 @@ docker run one
 
 ---
 
-## 9. Debugging & Inspection
+## 10. Debugging & Inspection
 
 ### Useful Commands for Troubleshooting
 
@@ -348,7 +387,7 @@ docker run one
 
 ---
 
-## 10. Bulk Container Management
+## 11. Bulk Container Management
 
 ### Managing Multiple Containers
 
@@ -361,7 +400,7 @@ docker run one
 
 ---
 
-## 11. Executing Commands Within Containers
+## 12. Executing Commands Within Containers
 
 ### Managing Container Processes and Files
 
@@ -376,7 +415,7 @@ docker run one
 
 ---
 
-## 12. Docker Image Operations
+## 13. Docker Image Operations
 
 ### Additional Commands for Images
 
