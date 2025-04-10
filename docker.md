@@ -1,10 +1,10 @@
 ![docker](assets/hero-docker.jpg)
 
 - [Docker Guide for Developers](#docker-guide-for-developers)
-  - [1. Docker Installation](#1-docker-installation)
+  - [1. Docker Installation Methods](#1-docker-installation-methods)
     - [Option 1: Install from Ubuntu Repository](#option-1-install-from-ubuntu-repository)
     - [Option 2: Install Using the Convenience Script](#option-2-install-using-the-convenience-script)
-    - [Option 3: Install from Docker’s Official Repository](#option-3-install-from-dockers-official-repository)
+    - [Option 3: Install from Docker’s Official Repository (Manual Method)](#option-3-install-from-dockers-official-repository-manual-method)
   - [2. Verify Docker Installation](#2-verify-docker-installation)
   - [3. Basic Docker Commands](#3-basic-docker-commands)
     - [Pulling and Running Images](#pulling-and-running-images)
@@ -37,24 +37,54 @@ This comprehensive guide provides step-by-step instructions for installing Docke
 
 ---
 
-## 1. Docker Installation
+## 1. Docker Installation Methods
 
 ### Option 1: Install from Ubuntu Repository
 This method installs Docker from the default Ubuntu repositories.
+
+This method installs Docker from the default Ubuntu package repositories.  
+It's quick and simple but often comes with an outdated version of Docker.
+
 ```bash
 sudo apt-get install docker.io -y
 ```
 
+**Pros:**
+-	Very easy to install
+- Managed by Ubuntu’s package system
+
+**Cons:**
+- Usually an older version of Docker
+- May lack features like the Docker Compose plugin (v2)
+
+**Use case:** Suitable for quick setups or minimal environments without the need for the latest features.
+
+
 ### Option 2: Install Using the Convenience Script
-Download and execute Docker's convenience script.
+This option uses a script provided by Docker to automate the setup.
+It installs the latest stable version from Docker’s official repositories.
+
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh ./get-docker.sh
 ```
+
 _Source: [Docker Docs: Install using the convenience script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script)_
 
-### Option 3: Install from Docker’s Official Repository
-Follow these steps to install Docker from the official repository:
+**Pros:**
+- Quick and installs the latest version
+- Adds Docker’s own repository automatically
+
+**Cons:**
+- Less transparency over what the script does
+- Security risk if not reviewed before running
+
+**Use case:** Good for test environments, VMs, or when you want a fast setup.
+
+
+### Option 3: Install from Docker’s Official Repository (Manual Method)
+This method gives you full control and transparency over the installation process.
+It is ideal for production systems.
 
 1. **Set up Docker’s apt repository:**
    ```bash
@@ -86,6 +116,16 @@ Follow these steps to install Docker from the official repository:
    ```bash
    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    ```
+
+**Pros:**
+- Full transparency and control
+- Installs the latest Docker version and plugins
+- Ideal for production or long-term systems
+
+**Cons:**
+- More setup steps required
+
+**Use case:** Recommended for production servers, secure environments, or when precise control is required.
 
 ---
 
