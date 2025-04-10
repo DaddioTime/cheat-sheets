@@ -2,6 +2,7 @@
 
 - [Docker Guide for Developers](#docker-guide-for-developers)
   - [1. Docker Installation Methods](#1-docker-installation-methods)
+    - [Comparison of Docker Installation Methods on Ubuntu](#comparison-of-docker-installation-methods-on-ubuntu)
     - [Option 1: Install from Ubuntu Repository](#option-1-install-from-ubuntu-repository)
     - [Option 2: Install Using the Convenience Script](#option-2-install-using-the-convenience-script)
     - [Option 3: Install from Docker’s Official Repository (Manual Method)](#option-3-install-from-dockers-official-repository-manual-method)
@@ -38,6 +39,14 @@ This comprehensive guide provides step-by-step instructions for installing Docke
 ---
 
 ## 1. Docker Installation Methods
+
+### Comparison of Docker Installation Methods on Ubuntu
+
+| Method                                      | Pros                                                                 | Cons                                                                   | Recommended for Production |
+|---------------------------------------------|----------------------------------------------------------------------|------------------------------------------------------------------------|-----------------------------|
+| **1. Ubuntu Repository (`docker.io`)**      | - Very easy to install<br>- No external sources<br>- Managed by Ubuntu | - Usually outdated version<br>- Missing features like `docker compose v2`<br>- No `buildx` plugin         | ❌ No                      |
+| **2. Convenience Script (`get.docker.com`)**| - Fast setup<br>- Always the latest stable version<br>- Adds repo automatically | - Black-box script<br>- Security concerns (runs external code as root)<br>- Not easily maintainable | ⚠️ Only for testing         |
+| **3. Docker APT Repository (official)**     | - Full control over version and components<br>- Latest stable Docker<br>- Supports `compose`, `buildx` plugins<br>- Docker recommended method | - Requires multiple steps<br>- Requires maintenance of repository config | ✅ Yes                     |
 
 ### Option 1: Install from Ubuntu Repository
 This method installs Docker from the default Ubuntu repositories.
