@@ -61,23 +61,36 @@ sudo ufw delete 1
 #!/bin/bash
 
 HOST="support.domain.com"
-PORT=22
+PORTS=(22 443)
 
-# Alte Regeln entfernen (optional – vorsichtig, könnte andere Regeln betreffen)
-for i in $(sudo ufw status numbered | grep '22/tcp' | awk -F'[][]' '{print $2}' | sort -rn); do yes y | sudo ufw delete "$i"; done
-
-# IPs vom Host auflösen (nur IPv4)
+# Resolve IPv4 addresses for the hostname
 ips=$(dig +short "$HOST" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$')
 
 if [[ -z "$ips" ]]; then
-    echo "❌ Keine gültigen IPs für $HOST gefunden."
+    echo "❌ No valid IPv4 addresses found for $HOST."
     exit 1
 fi
 
-for ip in $ips; do
-    echo "➡️ Erlaube Zugriff von $ip auf Port $PORT"
-    ufw allow from "$ip" to any port "$PORT" proto tcp
+echo "🔍 Resolved IPs for $HOST: $ips"
+
+# Remove existing UFW rules for the specified ports
+for port in "${PORTS[@]}"; do
+    echo "🧹 Removing existing UFW rules for port $port"
+    for i in $(sudo ufw status numbered | grep "${port}/tcp" | awk -F'[][]' '{print $2}' | sort -rn); do
+        yes y | sudo ufw delete "$i" > /dev/null
+    done
 done
+
+# Add UFW allow rules: sorted by port, then for each IP
+for port in "${PORTS[@]}"; do
+    for ip in $ips; do
+        echo "✅ Allowing access from $ip to port $port"
+        sudo ufw allow from "$ip" to any port "$port" proto tcp
+    done
+done
+
+echo "🎯 Done. Current UFW rules:"
+sudo ufw status numbered
 ```
 
 ```bash
